@@ -21,7 +21,7 @@ def get_current_timestamp(date: Optional[datetime] = None) -> str:
 def generate_nonce() -> str:
     return str(uuid.uuid4())
 
-def generate_dlo_url(userid: str, usertype: Literal['careprovider', 'client'], secret: str, base_url: str, path: Optional[str], redirecturl: Optional[str] = None) -> str:
+def generate_dlo_url(userid: str, usertype: Literal['careprovider', 'client'], secret: str, base_url: str, path: Optional[str] = None, redirecturl: Optional[str] = None) -> str:
     if not userid or not usertype or not secret or not base_url:
         raise ValueError('userid, usertype, secret, and base_url are required fields.')
     if usertype not in ['careprovider', 'client']:
