@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose User Type</title>
+</head>
+<body>
+    <h1>Choose a user type:</h1>
+
+    <form action="/generate_link" method="get">
+        <label for="user_type">User Type:</label>
+        <select id="user_type" name="user_type">
+            <option value="careprovider">Careprovider</option>
+            <option value="client">Client</option>
+        </select>
+        <br><br>
+
+        <label for="path">Enter optional path:</label>
+        <input type="text" id="path" name="path">
+        <br><br>
+
+        <button type="submit">Redirect to Minddistrict</button>
+    </form>
+</body>
+</html>

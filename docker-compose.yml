@@ -1,0 +1,14 @@
+version: '1'
+
+services:
+  dlo_generator:
+    environment:
+      - DEBUG=TRUE
+      - BASE_URL=https://ca-darejano.minddistrict.dev/
+    build: .
+    volumes:
+      - ./src:/app
+    env_file:
+      - .env
+    ports:
+      - "5005:5005"
