@@ -1,5 +1,6 @@
 import hmac
 import hashlib
+import uuid
 import urllib.parse
 from datetime import datetime, timezone
 from typing import Optional, Literal
@@ -18,7 +19,7 @@ def get_current_timestamp(date: Optional[datetime] = None) -> str:
     return datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
 
 def generate_nonce() -> str:
-    return str(int(datetime.now(timezone.utc).timestamp() * 1000))
+    return str(uuid.uuid4())
 
 def generate_dlo_url(userid: str, usertype: Literal['careprovider', 'client'], secret: str, base_url: str, path: Optional[str], redirecturl: Optional[str] = None) -> str:
     if not userid or not usertype or not secret or not base_url:
