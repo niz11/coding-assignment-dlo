@@ -9,9 +9,11 @@ import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Using HMAC-SHA512
+def build_sorted_payload(payload: dict) -> str:
+    return ''.join(f'{k}{payload[k]}' for k in sorted(payload))
+
 def generate_signature(secret: str, payload: dict) -> str:
-    sorted_payload = ''.join(f'{k}{payload[k]}' for k in sorted(payload))
+    sorted_payload = build_sorted_payload(payload)
     signature = hmac.new(secret.encode('utf-8'), sorted_payload.encode('utf-8'), hashlib.sha512).hexdigest()
     return signature
 
