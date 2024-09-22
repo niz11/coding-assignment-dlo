@@ -36,6 +36,7 @@ class TestGenerateURL(unittest.TestCase):
         redirect_url = "https://google.com"
         actual_url = generate_dlo_url(self.userid, self.usertype, self.secret, self.base_url, None, redirect_url)
         url_encoded_redirect = urllib.parse.quote(redirect_url, safe='')
+        self.assertTrue(actual_url.startswith(self.base_url + 'aux/frameredirect?'))
         self.assertIn(f"redirect={url_encoded_redirect}", actual_url)
     
     def test_generate_dlo_url_with_path(self):
@@ -52,6 +53,12 @@ class TestGenerateURL(unittest.TestCase):
         actual_url = generate_dlo_url(self.userid, self.usertype, self.secret, self.base_url, path)
         self.assertTrue(actual_url.startswith(self.base_url + path[1:] + "?"))
     
+    def test_generate_dlo_url_with_path_and_redirect_url(self):
+        path = "/c/"
+        redirect_url = "https://google.com"
+        actual_url = generate_dlo_url(self.userid, self.usertype, self.secret, self.base_url, path, redirect_url)
+        self.assertTrue(actual_url.startswith(self.base_url + 'aux/frameredirect?'))
+        self.assertFalse(path in actual_url)
 
     def test_generate_dlo_url_nonce(self):
         nonces = []

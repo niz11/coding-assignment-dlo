@@ -39,8 +39,12 @@ def generate_dlo_url(userid: str, usertype: Literal['careprovider', 'client'], s
 
     if redirecturl:
         user_information['redirect'] = redirecturl.strip()
+        if not base_url.endswith('/'):
+            base_url += '/aux/frameredirect'
+        else:
+            base_url += 'aux/frameredirect'
     
-    if path:
+    if path and not redirecturl:
         if not base_url.endswith('/'):
             base_url += '/' 
         if path.startswith('/'):

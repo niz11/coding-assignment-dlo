@@ -1,6 +1,6 @@
+import os
 from flask import Flask, redirect, request, render_template
 from dlo.dlo_url_generator import generate_dlo_url
-import os
 
 app = Flask(__name__)
 secret = os.getenv("SECRET_KEY")
