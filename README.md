@@ -11,6 +11,8 @@ This project provides a Python script and a Flask server for generating Delegate
 This project is Dockerized for ease of use. You'll need Docker installed locally. It is also possible to run the server on your machine directly, for that an installation of Flask and Werkzeug is needed (look into requirements.txt file.)
 
 1. Give permission for the bash script: ```chmod +x dlo.sh```
+2. Add and .env file: ```touch .env```
+3. Add the secret `SECRET_KEY` with it's value the .env file.
 2. Run:
         ```./dlo.sh build```
         ```./dlo.sh start```
