@@ -29,3 +29,7 @@ if [ $1 == 'h_rebuild' ]
         docker-compose build
         docker-compose up
 fi
+if [ $1 == 'unittest' ]
+    then
+         cd "src" && python3 -m unittest discover -s test -p "test_*.py"
+fi
